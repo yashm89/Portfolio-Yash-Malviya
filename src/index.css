@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  
+  --color-cyber-pink: #ff00ff;
+  --color-cyber-cyan: #00ffff;
+  --color-cyber-green: #00ff00;
+  --color-cyber-bg: #050505;
+  --color-cyber-card: #0a0a0a;
+  --color-cyber-border: #1a1a1a;
+}
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-white font-sans selection:bg-cyber-cyan selection:text-black;
+  }
+}
+
+.glitch-text {
+  text-shadow: 2px 0 #ff00ff, -2px 0 #00ffff;
+}
+
+.scanline {
+  width: 100%;
+  height: 100px;
+  z-index: 99;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+  opacity: 0.1;
+  position: absolute;
+  bottom: 100%;
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes scanline {
+  0% { bottom: 100%; }
+  100% { bottom: -100%; }
+}
+
+.terminal-window {
+  @apply bg-cyber-card border border-cyber-border rounded-lg overflow-hidden shadow-2xl;
+}
+
+.terminal-header {
+  @apply bg-cyber-border px-4 py-2 flex items-center gap-2;
+}
+
+.dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+.grid-bg {
+  background-image: linear-gradient(rgba(26, 26, 26, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.5) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
